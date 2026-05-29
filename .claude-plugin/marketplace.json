@@ -1,0 +1,19 @@
+{
+  "name": "google-geo",
+  "owner": {
+    "name": "Vadim Shchepin",
+    "url": "https://aiseo.hamburg"
+  },
+  "metadata": {
+    "description": "Google-official AI optimization skill for Claude Code, grounded strictly in Google Search Central docs.",
+    "version": "1.0.0",
+    "repository": "https://github.com/VadimShchepin/google-geo"
+  },
+  "plugins": [
+    {
+      "name": "google-geo",
+      "description": "Optimize for Google's generative AI features (AI Overviews, AI Mode) using Google's own guidance, including the mythbusting that llms.txt, content chunking, and special schema are not needed for Google.",
+      "source": "./"
+    }
+  ]
+}

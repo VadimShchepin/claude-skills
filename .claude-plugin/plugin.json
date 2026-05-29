@@ -1,0 +1,23 @@
+{
+  "name": "google-geo",
+  "description": "Optimize for Google's generative AI features (AI Overviews, AI Mode) using Google's own Search Central guidance: the AI optimization guide, the AI-generated-content policy, scaled content abuse, E-E-A-T and the Who/How/Why framework, technical eligibility, and Google's official mythbusting (no llms.txt, no chunking, no special schema).",
+  "version": "1.0.0",
+  "author": {
+    "name": "Vadim Shchepin",
+    "url": "https://aiseo.hamburg"
+  },
+  "homepage": "https://github.com/VadimShchepin/google-geo",
+  "repository": "https://github.com/VadimShchepin/google-geo",
+  "license": "MIT",
+  "keywords": [
+    "seo",
+    "geo",
+    "google",
+    "ai-overviews",
+    "ai-mode",
+    "generative-ai",
+    "eeat",
+    "claude-code-skill"
+  ],
+  "skills": "./skills"
+}

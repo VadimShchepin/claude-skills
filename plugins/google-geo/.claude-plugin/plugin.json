@@ -6,8 +6,8 @@
     "name": "Vadim Shchepin",
     "url": "https://aiseo.hamburg"
   },
-  "homepage": "https://github.com/VadimShchepin/google-geo",
-  "repository": "https://github.com/VadimShchepin/google-geo",
+  "homepage": "https://github.com/VadimShchepin/claude-skills/tree/main/plugins/google-geo",
+  "repository": "https://github.com/VadimShchepin/claude-skills",
   "license": "MIT",
   "keywords": [
     "seo",

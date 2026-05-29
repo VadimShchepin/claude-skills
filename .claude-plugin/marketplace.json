@@ -1,19 +1,40 @@
 {
-  "name": "google-geo",
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "claude-skills",
+  "description": "Vadim Shchepin's Claude Code skills marketplace. Each skill installs individually.",
   "owner": {
     "name": "Vadim Shchepin",
     "url": "https://aiseo.hamburg"
   },
   "metadata": {
-    "description": "Google-official AI optimization skill for Claude Code, grounded strictly in Google Search Central docs.",
+    "description": "Individually installable Claude Code skills for SEO, AI visibility, and adjacent work.",
     "version": "1.0.0",
-    "repository": "https://github.com/VadimShchepin/google-geo"
+    "repository": "https://github.com/VadimShchepin/claude-skills"
   },
   "plugins": [
     {
       "name": "google-geo",
-      "description": "Optimize for Google's generative AI features (AI Overviews, AI Mode) using Google's own guidance, including the mythbusting that llms.txt, content chunking, and special schema are not needed for Google.",
-      "source": "./"
+      "source": "./plugins/google-geo",
+      "description": "Optimize for Google's generative AI features (AI Overviews, AI Mode) using Google's own Search Central guidance, including the mythbusting that llms.txt, content chunking, and special schema are not needed for Google.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Vadim Shchepin",
+        "url": "https://aiseo.hamburg"
+      },
+      "homepage": "https://github.com/VadimShchepin/claude-skills/tree/main/plugins/google-geo",
+      "repository": "https://github.com/VadimShchepin/claude-skills",
+      "license": "MIT",
+      "keywords": [
+        "seo",
+        "geo",
+        "google",
+        "ai-overviews",
+        "ai-mode",
+        "generative-ai",
+        "eeat"
+      ],
+      "category": "seo",
+      "strict": false
     }
   ]
 }

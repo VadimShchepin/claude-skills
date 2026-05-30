@@ -21,7 +21,7 @@ Then install individual skills:
 | Skill | What it does |
 |-------|--------------|
 | [`google-geo`](plugins/google-geo) | Optimize for Google's generative AI features (AI Overviews, AI Mode) using Google's **own** Search Central guidance, including the mythbusting that llms.txt, content chunking, and special schema are not needed for Google. |
-| [`bing-geo-optimization`](plugins/bing-geo-optimization) | Get cited by Microsoft Copilot and Bing's generative AI. Grounded in a **real Bing Webmaster Tools AI citation export**: the defined-jargon + named-tools + benchmark-numbers recipe that wins grounding queries, the grounding-query reverse-engineering method, and IndexNow eligibility. |
+| [`bing-geo-optimization`](plugins/bing-geo-optimization) | The **Bing/Copilot specialization of `marketing-skills:ai-seo`**, re-weighted using a **real Bing Webmaster Tools AI citation export**. Inherits ai-seo's three pillars + Princeton GEO methods, then adds the Bing-only mechanics: visible grounding queries, the AI reports, the reverse-engineering method, and IndexNow. |
 
 ---
 
@@ -53,8 +53,10 @@ Sources: Google Search Central
 
 ## What `bing-geo-optimization` covers
 
-Unlike the others, this skill is grounded in a **real Bing Webmaster Tools AI citation
-export** rather than studies or vendor docs.
+This skill is a **specialization of `marketing-skills:ai-seo`**, the skill a real Bing
+Webmaster Tools AI citation export picked as the closest predictor of Bing results. It does
+not reinvent GEO: run ai-seo as the base (its three pillars and Princeton GEO methods), then
+this skill re-weights them for Bing and adds the Bing-only mechanics below.
 
 - **Core premise:** Microsoft Copilot grounds on the Bing index via query fan-out. A user
   prompt becomes keyword-dense **grounding queries**, and Bing Webmaster Tools shows them to

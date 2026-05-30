@@ -20,11 +20,23 @@ Last reviewed: May 2026.
 
 ---
 
+## This skill is a specialization of `ai-seo`, not a sibling
+
+The other rows are alternative skills. `bing-geo-optimization` is different: it **extends
+`marketing-skills:ai-seo`**, the skill a real citation export identified as the closest
+predictor of Bing results. It inherits ai-seo's three pillars (Structure / Authority /
+Presence) and Princeton GEO method table, then re-weights them for Bing and adds the
+Bing-only mechanics (visible grounding queries, the AI Performance reports, IndexNow). Run
+ai-seo as the base, then layer this. It is not built on `google-geo`; google-geo is the
+wrong lens for Bing by design (see the conflict below).
+
 ## What makes this skill distinct
 
 - **It is the only one with ground truth.** google-geo cites Google's docs; seo-geo and
   ai-seo cite published studies. This skill is built from an actual per-URL, per-grounding-query
   citation export, so its core claim (term density wins on Bing) is observed, not inferred.
+  That same export is why it inherits ai-seo specifically: ai-seo's levers matched the data,
+  seo-geo's only partially, google-geo's not at all (for Bing).
 - **It optimizes against the retriever's own words.** Bing Webmaster Tools exposes grounding
   queries. No other engine does. The workflow here (reverse-engineer the grounding queries)
   has no equivalent in the Google or cross-platform skills.

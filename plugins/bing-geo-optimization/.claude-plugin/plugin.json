@@ -1,6 +1,6 @@
 {
   "name": "bing-geo-optimization",
-  "description": "Optimize content to get cited by Microsoft Copilot and Bing's generative AI answers. Grounded in a real Bing Webmaster Tools AI citation export: the defined-jargon + named-tools + benchmark-numbers recipe that wins grounding queries, how to read Bing's AI Performance reports, the grounding-query reverse-engineering method, and IndexNow technical eligibility.",
+  "description": "The Bing/Copilot specialization of marketing-skills:ai-seo, re-weighted using a real Bing Webmaster Tools AI citation export. Keeps ai-seo's three pillars and Princeton GEO methods, then adds the Bing-only mechanics: visible grounding queries, the AI Performance reports, the grounding-query reverse-engineering method, and IndexNow eligibility.",
   "version": "1.0.0",
   "author": {
     "name": "Vadim Shchepin",

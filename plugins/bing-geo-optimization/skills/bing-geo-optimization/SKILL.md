@@ -2,201 +2,177 @@
 name: bing-geo-optimization
 description: >
   Optimize content to get cited by Microsoft Copilot and Bing's generative AI
-  answers. Grounded in a real Bing Webmaster Tools AI citation export rather than
-  generic GEO theory. Covers the empirically validated citation recipe
-  (defined-jargon + named-tools + benchmark-numbers), how Bing's grounding /
-  query fan-out works, how to read the AI Performance, AI Page Stats and AI
-  Search Queries reports, the grounding-query reverse-engineering method, and
-  IndexNow technical eligibility. Use when the user says "Bing", "Copilot",
-  "Microsoft Copilot", "Bing Copilot", "Bing AI", "grounding queries", "Bing
-  Webmaster Tools AI", "IndexNow", or wants to get cited specifically by Bing /
-  Copilot. For Google AI Overviews use google-geo; for cross-platform GEO
-  (ChatGPT, Perplexity, llms.txt) use seo-geo / ai-seo.
+  answers. This is the Bing/Copilot specialization of the cross-platform
+  marketing-skills:ai-seo skill, narrowed and re-weighted using a real Bing
+  Webmaster Tools AI citation export. It keeps ai-seo's framework (the three
+  pillars Structure / Authority / Presence and the Princeton GEO methods) and
+  adds what only Bing offers: visible grounding queries, the AI Performance / AI
+  Page Stats / AI Search Queries reports, the grounding-query
+  reverse-engineering method, and IndexNow eligibility. Use when the user says
+  "Bing", "Copilot", "Microsoft Copilot", "Bing AI", "grounding queries", "Bing
+  Webmaster Tools AI", "IndexNow", or wants citations specifically from Bing /
+  Copilot. For Google AI Overviews use google-geo; for the full cross-platform
+  playbook use marketing-skills:ai-seo or seo-geo.
 ---
 
 # Bing & Copilot GEO Optimization
 
-Get content cited in Microsoft Copilot and Bing's AI answers. This skill is grounded
-in a **real Bing Webmaster Tools AI citation export** (aiseo.hamburg, May 2026), not
-third-party theory. Where it differs from generic GEO advice, it is because the data
-showed what actually moved citations on this engine.
+This skill **does not reinvent GEO.** It is the Bing/Copilot specialization of the
+closest existing skill, **`marketing-skills:ai-seo`**, which a real citation export
+identified as the best predictor of Bing results. Use ai-seo's framework as the base;
+use this skill to re-weight it for Bing and to add the Bing-only mechanics.
 
-**What the data was:** three CSVs from Bing Webmaster Tools' AI Performance section,
-covering Feb to late May 2026:
-- `AIPerformanceOverviewStats` — daily `Citations` and `Cited Pages`.
-- `AIPageStatsReport` — total `Citations` per URL.
-- `AISearchQueriesReport` — `Grounding Query` strings and their citation counts.
+**Why ai-seo is the base (not google-geo):** an aiseo.hamburg Bing Webmaster Tools AI
+export (Feb to late May 2026) was graded against three skills. `marketing-skills:ai-seo`
+matched the observed outcome most closely: its Princeton-GEO levers (statistics +37%,
+cite sources +40%, technical terms +18%, unique vocabulary +15%, keyword stuffing -10%)
+directly predicted which page won. `seo-geo` was a partial match (it over-weights
+multimodal, Wikipedia mentions, llms.txt, 134-167 word passages, none of which drove this
+result). `google-geo` was the wrong lens for Bing by design (Google says AI-keyword
+phrasing is unnecessary; on Bing it was decisive). So this skill inherits ai-seo.
 
-One page (`/wissen/ki-sichtbarkeit-messen`) earned **248 of ~600 citations (~58%)**;
-only 10 of 42 articles got any citations at all. The rest of this skill explains why,
-and how to reproduce it.
-
-**Choosing between skills:** for Google's AI features (AI Overviews, AI Mode) use
-`google-geo`. For cross-platform GEO that also covers ChatGPT, Perplexity, llms.txt and
-brand-mention strategy, use `seo-geo` or `ai-seo`. This skill is **Bing / Copilot
-specific**. See `references/skill-comparison.md`.
+**What the export showed:** one page (`/wissen/ki-sichtbarkeit-messen`) won 248 of 415
+citations (~60%); only 10 of 42 pages were cited at all. The winner was the only page that
+densely defined the topic jargon, named real tools, and put a number on every metric.
 
 ---
 
-## Core premise: Copilot grounds on the Bing index via query fan-out
+## Inherit this from `marketing-skills:ai-seo`
 
-Microsoft Copilot answers are produced by **retrieval-augmented generation over the Bing
-index**. A user prompt is not searched verbatim. Copilot rewrites it into one or more
-**grounding queries** (a query fan-out), retrieves candidate passages for each, and the
-model cites the passages it actually used. Implications:
+Read ai-seo first. This skill assumes its model and vocabulary:
 
-- To be cited, a page must first be **in the Bing index** and retrievable for a grounding
-  query. Bing SEO is the floor; GEO is the ceiling.
-- The grounding queries are **machine-generated and keyword-dense**. They bundle the
-  jargon of a topic into one long string (see below). The page that most completely and
-  explicitly matches that bundle wins the citation.
-- Bing Webmaster Tools **exposes the grounding queries to you**. This is the single
-  biggest advantage Bing has over every other AI engine: you can read the retriever's
-  own words and optimize directly against them.
+- **"Cited, not ranked."** The goal is to be a source in the answer, not to rank.
+- **The three pillars:** (1) Structure - make it extractable; (2) Authority - make it
+  citable; (3) Presence - be where the engine looks.
+- **The Princeton GEO method table** (cite sources +40%, statistics +37%, quotations +30%,
+  authoritative tone +25%, technical terms +18%, unique vocabulary +15%; keyword stuffing -10%).
+- **The extractability checklist** (definition in first lines, self-contained answer
+  blocks, stats with sources, comparison tables, query-shaped FAQ, schema, author attribution).
+- **The visibility audit** (query the engine, log who is cited, find the gap).
+- **Content types that get cited most** (comparison ~33%, definitive guides ~15%, original
+  research ~12%).
 
----
-
-## The validated recipe (what wins Bing citations)
-
-In the export, the winning page was the **only** page that combined all of the following
-on a single URL. Pages that had rich structure (TL;DR, FAQ, tables) but lacked these
-earned **zero** citations, even when a grounding query literally asked for their topic.
-Structure is necessary but not sufficient. **Term density is the moat.**
-
-### 1. Define the jargon as glossable units
-Each key term gets its own heading, followed by a one-sentence definition and a number or
-formula. Copilot's grounding queries are built from these exact terms, so the page must
-contain them explicitly, defined, not paraphrased away.
-
-> **Share of Voice in KI-Antworten** misst, wie oft deine Marke im Vergleich zu
-> Wettbewerbern in KI-Antworten zitiert wird. Bei 100 Prompts 12-mal zitiert = 12 % Share
-> of Voice.
-
-This single mechanic (domain-specific terminology + unique vocabulary) is consistent with
-the Princeton GEO finding that technical terms (+18%) and unique vocabulary (+15%) lift AI
-visibility. On Bing it is decisive because the grounding query *is* the jargon bundle.
-
-### 2. Name real, branded tools and entities
-Not "monitoring tools" but **Ahrefs Brand Radar, Semrush AI Visibility, GA4, GoAccess,
-GPTBot, OAI-SearchBot, PerplexityBot**. Proper nouns are retrievable anchors. Generic
-category words are not.
-
-### 3. Attach a number to every claim
-A benchmark, range, or price on each metric: "20-40 % Citation Rate in der Nische",
-"15-25 % MoM", "ab 99 $/Monat". Statistics carried the citations (consistent with +37%
-for statistics, +40% for cited sources in the Princeton study). A page of adjectives gets
-ignored; a page of numbers gets quoted.
-
-### 4. Structure for passage extraction
-- A **TL;DR / definition box** in the first screen.
-- A **named, numbered framework** ("Die 4 Messebenen", "5 KPIs").
-- **FAQ phrased as literal user questions**, each answered self-containedly in 40-80 words.
-- Short, chunked answer blocks (one idea each), not walls of prose.
-- A **Quellen / sources** block with named, dated references.
-
-### 5. Frame against the displaced thing
-The grounding queries included "Keyword Ranking **ersetzen**" (replace keyword ranking).
-Pages that explicitly contrast the new concept with the old one ("GSC ist blind für
-KI-Traffic", "ersetzt klassisches Ranking-Reporting") match comparison-shaped grounding
-queries.
-
-**One-line recipe:** one URL that *defines the topic's jargon, names the real tools, puts a
-number on every metric, and chunks it for extraction* will dominate that topic's grounding
-queries on Bing.
+Everything below is how Bing **re-weights and extends** that base. Do not duplicate ai-seo;
+apply it, then layer this.
 
 ---
 
-## The grounding-query reverse-engineering method
+## How Bing/Copilot differs: it shows you the retriever's words
 
-This is the workflow that makes Bing optimization measurable instead of speculative.
+Microsoft Copilot answers via retrieval-augmented generation over the **Bing index**. A
+user prompt is rewritten into one or more **grounding queries** (a query fan-out), passages
+are retrieved per grounding query, and the model cites what it used. Two consequences set
+Bing apart from every other engine ai-seo covers:
 
-1. **Export the AI Search Queries report** from Bing Webmaster Tools (the
-   `AISearchQueriesReport`). Each row is a grounding query Copilot used, with a citation count.
-2. **Tokenize the top grounding queries.** Collapse near-duplicates. You will see the
-   retriever's vocabulary for your space, e.g. `Citation Rate | Share of Voice | Tools |
-   Keyword Ranking ersetzen | Überwachung | ChatGPT Gemini Perplexity | Methoden`.
-3. **Cluster the queries.** Different bundles = different intents (e.g. "measure" vs
-   "monitor continuously" vs "competitor share of voice"). Each cluster wants its own page.
-4. **Map clusters to pages** with the AI Page Stats report. A cluster with high citations
-   and no dedicated page is an open opportunity; a cluster with citations split across weak
-   pages is a consolidation opportunity.
-5. **For each target cluster, build or upgrade one page** that explicitly defines every
-   token in the bundle (recipe above). Aim to be the single most complete match.
-6. **Re-export monthly.** Watch `Cited Pages` rise as the cluster broadens. Bing grounds
-   more pages over time once a topical hub proves citable.
+1. **Bing exposes the grounding queries to you** (Bing Webmaster Tools -> AI Search
+   Queries). No other engine reveals its retriever's own phrasing. This turns ai-seo's
+   "guess the query and check" audit into a direct read.
+2. **The grounding queries are keyword-dense bundles**, e.g. `Citation Rate Share of Voice
+   Tools Keyword Ranking ersetzen`. They reward exactly the levers ai-seo ranks highest
+   (technical terms, unique vocabulary, statistics), more sharply than the cross-platform
+   average.
+
+---
+
+## Re-weighting the three pillars for Bing
+
+### Pillar 1 - Structure (ai-seo) -> on Bing, term density dominates
+ai-seo says make content extractable. Bing adds: **the extractable passage must contain the
+grounding query's exact jargon, defined.** In the export, the winner defined Share of Voice
+6x with a formula; structurally rich pages with no jargon got zero citations. So, on top of
+ai-seo's structure rules:
+- Give each key term its own heading + one-sentence definition + a number.
+- Name real, branded entities (Ahrefs Brand Radar, Semrush AI Visibility, GA4, GPTBot,
+  PerplexityBot), never generic categories. Proper nouns are retrievable anchors.
+- Keep ai-seo's 40-60 word answer blocks (this matched Bing better than seo-geo's 134-167).
+
+### Pillar 2 - Authority (ai-seo) -> on Bing, numbers carry the citation
+ai-seo's top levers are cite-sources (+40%) and statistics (+37%). Bing confirmed this
+bluntly: pages of adjectives were ignored, pages with a benchmark on every metric were
+quoted. Put a number, range, or price on every claim ("20-40% Citation Rate", "ab 99
+$/Monat"), and keep a named, dated Quellen block.
+
+### Pillar 3 - Presence (ai-seo) -> on Bing, presence means the Bing index + IndexNow
+ai-seo says be where the engine looks. For Copilot that is the **Bing index specifically**:
+- Confirm indexation in **Bing Webmaster Tools** (not just Google Search Console).
+- Wire up **IndexNow** so new/updated URLs reach Bing immediately. Bing consumes IndexNow;
+  Google does not. This is a Bing-only presence lever ai-seo does not cover.
+- Allow **Bingbot** in robots.txt (Copilot grounds via the Bing index).
+- Serve content **server-side** (grounding reads indexed HTML, not a client-only render).
+
+---
+
+## The grounding-query reverse-engineering method (Bing-only)
+
+This replaces ai-seo's "guess and check" audit with the retriever's actual words.
+
+1. **Export the AI Search Queries report** (Bing Webmaster Tools -> AI Performance). Each
+   row is a grounding query + citation count. The other two reports: **AI Performance
+   Overview** (daily Citations / Cited Pages) and **AI Page Stats** (Citations per URL).
+2. **Tokenize the top grounding queries**, collapsing near-duplicates, to get your space's
+   retrieval vocabulary.
+3. **Cluster by intent** (e.g. "measure" vs "monitor continuously" vs "competitor share of
+   voice"). Each cluster wants one owning page.
+4. **Map clusters to pages** via AI Page Stats. High-citation cluster with no owner = build.
+   One cluster split across weak pages = consolidate (avoid cannibalization).
+5. **Build/upgrade one page per cluster** that defines every token in the bundle (the
+   re-weighted pillars above). Be the single most complete match.
+6. **Re-export monthly.** Watch Cited Pages rise as the hub proves citable.
 
 ---
 
 ## Technical eligibility checklist (Bing-specific)
 
-A "no" here can keep a page out of the index, so nothing else matters.
+A "no" can keep the page out of the index, so it cannot be cited.
 
-- [ ] Page is **indexed in Bing** (Bing Webmaster Tools URL Inspection, not just Google).
-- [ ] **IndexNow** is wired up so new and updated URLs are pushed to Bing instantly
-      (Bing, not Google, consumes IndexNow). This shortens the lag between publishing and
-      becoming groundable.
+- [ ] Indexed in **Bing** (Bing Webmaster Tools URL Inspection).
+- [ ] **IndexNow** submitting new/updated URLs (key file at domain root, request to
+      `api.indexnow.org/indexnow`).
 - [ ] Sitemap submitted in **Bing Webmaster Tools**; crawl errors clear.
-- [ ] Main content **renders server-side** (Copilot grounding reads the indexed HTML, not
-      a client-only React tree).
-- [ ] **Bingbot is allowed** in robots.txt. Bing Copilot grounds via the Bing index, so
-      blocking Bingbot blocks Copilot citations.
-- [ ] `<title>`, meta description, headings and image `alt` are accurate (they feed the
-      index and the model's context).
-- [ ] No `noindex` / `nosnippet`; canonical is correct; duplicate content controlled.
+- [ ] Main content **server-side rendered**.
+- [ ] **Bingbot allowed** in robots.txt.
+- [ ] Accurate `<title>`, meta description, headings, image `alt`; correct canonical; no
+      `noindex` / `nosnippet`.
 
 ---
 
-## What Bing rewards that Google explicitly does not
+## Engine-correct conflict with google-geo (do not mis-apply)
 
-This is where this skill diverges from `google-geo`, and the divergence is evidence-based.
-`google-geo` (correctly, per Google's docs) says an "AI-optimized writing style / keyword
-phrasing" is **not needed** for Google's AI features. On **Bing**, the opposite held: the
-page that most explicitly used the jargon bundle won, by a wide margin. The mechanisms
-differ:
+| Signal | Google AI features (google-geo) | Bing / Copilot (this export) |
+|--------|----------------------------------|------------------------------|
+| Dense, defined domain jargon | "Not needed", synonyms understood | **Decisive** - matches grounding-query tokens |
+| Grounding-query visibility | Not exposed | **Exposed** in Bing Webmaster Tools |
+| IndexNow | Not consumed | **Consumed** |
+| Named tools + numbers | Quality, not a special lever | **Strongly correlated** with citation share |
 
-| Signal | Google AI features (per google-geo) | Bing / Copilot (per this export) |
-|--------|-------------------------------------|----------------------------------|
-| Dense, defined domain jargon | "Not needed", systems understand synonyms | **Decisive** — matches grounding-query tokens |
-| Named tools + benchmark numbers | Helps as quality, not a special lever | **Strongly correlated** with citation share |
-| Grounding-query visibility | Not exposed | **Exposed** in Bing Webmaster Tools (optimize directly) |
-| IndexNow | Not consumed by Google | **Consumed** — real ingestion speed-up |
-| llms.txt / chunking / schema-for-AI | Not needed | Not the driver here either; term density was |
-
-Do not present this as contradicting Google. Both are true for their own engine. The error
-to avoid is optimizing Bing the way you would optimize Google, and assuming term density is
-unnecessary. On Bing, the data says it is the whole game.
+Both positions are correct for their own engine. The error to avoid is optimizing Bing the
+way Google's docs prescribe and assuming term density is unnecessary. On Bing the data says
+it is the whole game.
 
 ---
 
 ## How to run a Bing GEO audit with this skill
 
-1. **Eligibility first.** Walk the technical checklist. Confirm Bing indexation and
-   IndexNow. If a page is not in the Bing index, it cannot be cited; fix that before content.
-2. **Pull the AI reports.** Export AI Performance Overview, AI Page Stats, AI Search Queries
-   from Bing Webmaster Tools. Without them you are guessing; with them you have the answer key.
-3. **Reverse-engineer the grounding queries** (method above). Produce the token bundles and
-   clusters.
-4. **Score each priority page against the recipe.** For each target cluster, check: are all
-   the bundle's tokens present and defined? Named tools? A number per metric? TL;DR, numbered
-   framework, query-shaped FAQ, sources? Chunked for extraction?
-5. **Prioritize:** consolidate citations onto one best page per cluster; build new pages for
-   high-citation clusters that have no owner; do not split one cluster across near-duplicate
-   pages (cannibalization).
+1. **Apply ai-seo first** for the baseline (pillars, extractability checklist, content type).
+2. **Eligibility** - walk the Bing checklist; confirm indexation and IndexNow.
+3. **Pull the three AI reports**; reverse-engineer the grounding queries.
+4. **Score priority pages** against the re-weighted pillars: every bundle token defined?
+   named tools? a number per metric? extraction structure? Bing-indexed and IndexNow-pushed?
+5. **Prioritize** - consolidate onto one best page per cluster; build owners for ownerless
+   high-citation clusters.
 
 ### Output: `BING-GEO-OPTIMIZATION.md`
-
-1. **Eligibility status** — Bing indexation, IndexNow, Bingbot access, SSR; blockers first.
-2. **Citation landscape** — citations per page from the export; concentration and gaps.
-3. **Grounding-query clusters** — the token bundles, citation counts, and the page that
-   should own each.
-4. **Per-page recipe scorecard** — which of the 5 recipe elements each priority page is
-   missing.
-5. **Top 5 highest-impact actions** — ordered by citations-at-stake vs. effort.
+1. **Eligibility status** (Bing index, IndexNow, Bingbot, SSR) - blockers first.
+2. **Citation landscape** (citations per page; concentration and gaps).
+3. **Grounding-query clusters** (token bundles, counts, the page that should own each).
+4. **Per-page recipe scorecard** (which re-weighted-pillar element each page is missing).
+5. **Top 5 highest-impact actions** (citations-at-stake vs effort).
 
 ---
 
 ## One-line summary
 
-Bing Copilot tells you exactly what it wants: read your grounding queries in Bing Webmaster
-Tools, then build one indexed, IndexNow-pushed page per query cluster that defines every
-jargon token, names the real tools, and puts a number on every metric. Term density wins.
+Run `marketing-skills:ai-seo` as the base (it predicted Bing best), then specialize: read
+your grounding queries in Bing Webmaster Tools and build one Bing-indexed, IndexNow-pushed
+page per cluster that defines every jargon token, names the real tools, and puts a number on
+every metric. Term density wins on Bing.

@@ -13,6 +13,7 @@ Then install individual skills:
 
 ```
 /plugin install google-geo@claude-skills
+/plugin install bing-geo-optimization@claude-skills
 ```
 
 ## Skills
@@ -20,6 +21,7 @@ Then install individual skills:
 | Skill | What it does |
 |-------|--------------|
 | [`google-geo`](plugins/google-geo) | Optimize for Google's generative AI features (AI Overviews, AI Mode) using Google's **own** Search Central guidance, including the mythbusting that llms.txt, content chunking, and special schema are not needed for Google. |
+| [`bing-geo-optimization`](plugins/bing-geo-optimization) | Get cited by Microsoft Copilot and Bing's generative AI. Grounded in a **real Bing Webmaster Tools AI citation export**: the defined-jargon + named-tools + benchmark-numbers recipe that wins grounding queries, the grounding-query reverse-engineering method, and IndexNow eligibility. |
 
 ---
 
@@ -46,6 +48,31 @@ Sources: Google Search Central
 [Using AI-generated content](https://developers.google.com/search/docs/fundamentals/using-gen-ai-content),
 [Spam policies](https://developers.google.com/search/docs/essentials/spam-policies),
 [Creating helpful content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content).
+
+---
+
+## What `bing-geo-optimization` covers
+
+Unlike the others, this skill is grounded in a **real Bing Webmaster Tools AI citation
+export** rather than studies or vendor docs.
+
+- **Core premise:** Microsoft Copilot grounds on the Bing index via query fan-out. A user
+  prompt becomes keyword-dense **grounding queries**, and Bing Webmaster Tools shows them to
+  you. No other engine exposes its retriever's own words.
+- **The validated recipe:** the page that won ~58% of citations was the only one combining
+  defined jargon (as glossable units) + named branded tools + a benchmark number on every
+  metric + extraction-friendly structure + "displaced the old thing" framing. Structurally
+  rich but jargon-light pages got **zero** citations. Term density is the moat.
+- **The grounding-query reverse-engineering method:** export the AI Search Queries report,
+  tokenize and cluster the grounding queries, map clusters to pages, and build one complete
+  page per cluster.
+- **Bing-specific eligibility:** Bing indexation, **IndexNow** (Bing consumes it, Google does
+  not), Bingbot access, SSR. Outputs `BING-GEO-OPTIMIZATION.md`.
+
+It ships with a [comparison](plugins/bing-geo-optimization/skills/bing-geo-optimization/references/skill-comparison.md)
+explaining the engine-correct conflict with `google-geo`: Google officially says AI-keyword
+phrasing is unnecessary; on Bing the dense jargon bundle was decisive. Both are true, for
+different engines.
 
 ---
 

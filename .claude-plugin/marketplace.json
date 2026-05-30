@@ -35,6 +35,31 @@
       ],
       "category": "seo",
       "strict": false
+    },
+    {
+      "name": "bing-geo-optimization",
+      "source": "./plugins/bing-geo-optimization",
+      "description": "Optimize content to get cited by Microsoft Copilot and Bing's generative AI. Grounded in a real Bing Webmaster Tools AI citation export: the defined-jargon + named-tools + benchmark-numbers recipe that wins grounding queries, how to read Bing's AI reports, the grounding-query reverse-engineering method, and IndexNow eligibility.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Vadim Shchepin",
+        "url": "https://aiseo.hamburg"
+      },
+      "homepage": "https://github.com/VadimShchepin/claude-skills/tree/main/plugins/bing-geo-optimization",
+      "repository": "https://github.com/VadimShchepin/claude-skills",
+      "license": "MIT",
+      "keywords": [
+        "seo",
+        "geo",
+        "bing",
+        "copilot",
+        "microsoft",
+        "ai-search",
+        "indexnow",
+        "grounding-queries"
+      ],
+      "category": "seo",
+      "strict": false
     }
   ]
 }
